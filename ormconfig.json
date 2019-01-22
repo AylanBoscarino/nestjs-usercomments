@@ -1,0 +1,8 @@
+{
+    "type": "mongodb",
+    "host": "localhost",
+    "logging": false,
+    "database": "user-comments",
+    "entities": ["src/**/**.entity{.ts,.js}"],
+    "synchronize": true
+}
