@@ -1,7 +1,8 @@
 import { Entity, Column, ObjectID, ObjectIdColumn, Index} from 'typeorm';
+import { JwtPayload } from '../auth/jwt-payload.interface';
 
 @Entity('users')
-export class User {
+export class User implements JwtPayload {
     @ObjectIdColumn()
     id: ObjectID;
 

@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { Comment } from './comment.entity';
 import { UpdateResult, DeleteResult } from 'typeorm';
+import { AuthGuard, PassportModule } from '@nestjs/passport';
 
 @Controller('/api/comments')
 export class CommentController {
@@ -13,6 +14,7 @@ export class CommentController {
     }
 
     @Post()
+    @UseGuards(AuthGuard('jwt'))
     createComment(@Body() comment): void {
         this.commentService.create(comment);
      }
