@@ -30,6 +30,15 @@ export class AuthService {
         return { salt, hash };
     }
 
+    async validateUser(payload: JwtPayload): Promise<JwtPayload> {
+        const user = await this.userService.getPayloadFromEmail(payload.email);
+        if (!user) {
+            throw new UnauthorizedException();
+        }
+
+        return user;
+    }
+
     // TODO: criar um serviço para gerar hash de usuário.
     // TODO: terminar de implementar o sistema de autenticação
 

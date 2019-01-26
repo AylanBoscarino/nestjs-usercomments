@@ -17,7 +17,7 @@ export class Comment {
     @Column()
     dataCriacao: number;
 
-    @Column()
+    @Column({ default: true })
     ativo: boolean;
 
 }
